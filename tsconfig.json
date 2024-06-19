@@ -1,0 +1,27 @@
+{
+	"compileOnSave": true,
+	"include": ["./packages/**/*"],
+	"compilerOptions": {
+        "outDir": "dist", // 输出的目录
+		"target": "es2016", // 目标语法
+		"module": "ESNext", // 模块格式
+		"lib": ["ESNext", "DOM"], // 支持的类库
+		"moduleResolution": "Node", // 模块解析方式
+        "jsx": "preserve", // jsx 不转义
+		"useDefineForClassFields": true,
+		"strict": true,
+		"sourceMap": true, // 采用 sourcemap
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"noEmit": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noImplicitReturns": false,
+		"skipLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@vue/*": ["packages/*/src"]
+		},
+	}
+}

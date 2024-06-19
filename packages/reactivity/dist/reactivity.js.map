@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/effect.ts", "../src/reactive.ts"],
+  "sourcesContent": ["export function effect() {}\n", "import { isObject } from \"@vue/shared\";\n\nconst mutableHandlers: ProxyHandler<any> = {\n  get() {},\n  set() {},\n};\n\nexport function reactive(value) {\n  return createReactiveObject(value);\n}\n\nfunction createReactiveObject(target) {\n  let proxy = new Proxy(target, mutableHandlers);\n}\n"],
+  "mappings": ";AAAO,SAAS,SAAS;AAAC;;;ACE1B,IAAM,kBAAqC;AAAA,EACzC,MAAM;AAAA,EAAC;AAAA,EACP,MAAM;AAAA,EAAC;AACT;AAEO,SAAS,SAAS,OAAO;AAC9B,SAAO,qBAAqB,KAAK;AACnC;AAEA,SAAS,qBAAqB,QAAQ;AACpC,MAAI,QAAQ,IAAI,MAAM,QAAQ,eAAe;AAC/C;",
+  "names": []
+}
