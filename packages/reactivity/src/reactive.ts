@@ -25,3 +25,7 @@ function createReactiveObject(target: any) {
 export function reactive(target: any) {
   return createReactiveObject(target);
 }
+
+export function toReactive(value) {
+  return isObject(value) ? reactive(value) : value;
+}

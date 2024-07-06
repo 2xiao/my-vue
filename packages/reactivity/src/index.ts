@@ -1,2 +1,3 @@
-export { effect } from "./effect";
-export { reactive } from "./reactive";
+export * from "./effect";
+export * from "./reactive";
+export * from "./ref";

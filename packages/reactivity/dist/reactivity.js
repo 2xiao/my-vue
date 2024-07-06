@@ -159,8 +159,105 @@ function createReactiveObject(target) {
 function reactive(target) {
   return createReactiveObject(target);
 }
+function toReactive(value) {
+  return isObject(value) ? reactive(value) : value;
+}
+
+// packages/reactivity/src/ref.ts
+function creatRef(value) {
+  return new RefImpl(value);
+}
+function trackRefValue(ref2) {
+  if (activeEffect) {
+    trackEffect(
+      activeEffect,
+      ref2.dep = createDep(() => ref2.dep = void 0)
+    );
+  }
+}
+function triggerRefValue(ref2) {
+  let dep = ref2.dep;
+  if (dep) {
+    triggerEffects(dep);
+  }
+}
+var RefImpl = class {
+  // 用于收集对应的 effect
+  constructor(rawValue) {
+    this.rawValue = rawValue;
+    this._value = toReactive(rawValue);
+  }
+  __v_isRef = true;
+  // 增加 ref 标识
+  _value;
+  // 用于保存 ref 的值
+  dep;
+  get value() {
+    trackRefValue(this);
+    return this._value;
+  }
+  set value(newValue) {
+    if (newValue !== this.rawValue) {
+      this.rawValue = newValue;
+      this._value = newValue;
+    }
+    triggerRefValue(this);
+  }
+};
+var ObjectRefImpl = class {
+  // 增加 ref 标识
+  constructor(_object, _key) {
+    this._object = _object;
+    this._key = _key;
+  }
+  __v_isRef = true;
+  get value() {
+    return this._object[this._key];
+  }
+  set value(newValue) {
+    this._object[this._key] = newValue;
+  }
+};
+function ref(value) {
+  return creatRef(value);
+}
+function toRef(object, key) {
+  return new ObjectRefImpl(object, key);
+}
+function toRefs(object) {
+  const res = {};
+  for (let key in object) {
+    res[key] = toRef(object, key);
+  }
+  return res;
+}
+function proxyRefs(objectWithRefs) {
+  return new Proxy(objectWithRefs, {
+    get(target, key, reveiver) {
+      let r = Reflect.get(target, key, reveiver);
+      return r.__v_isRef ? r.value : r;
+    },
+    set(target, key, value, reveiver) {
+      const oldValue = target[key];
+      if (oldValue.__v_isRef) {
+        oldValue.value = value;
+        return true;
+      } else {
+        return Reflect.set(target, key, value, reveiver);
+      }
+    }
+  });
+}
 export {
+  activeEffect,
   effect,
-  reactive
+  proxyRefs,
+  reactive,
+  ref,
+  toReactive,
+  toRef,
+  toRefs,
+  trackEffect,
+  triggerEffects
 };
 //# sourceMappingURL=reactivity.js.map
