@@ -7,7 +7,7 @@ function creatRef(value) {
 }
 
 // 依赖收集
-function trackRefValue(ref) {
+export function trackRefValue(ref) {
   if (activeEffect) {
     trackEffect(
       activeEffect,
@@ -17,7 +17,7 @@ function trackRefValue(ref) {
 }
 
 // 触发更新
-function triggerRefValue(ref) {
+export function triggerRefValue(ref) {
   let dep = ref.dep;
   if (dep) {
     triggerEffects(dep);

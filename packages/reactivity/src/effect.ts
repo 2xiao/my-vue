@@ -1,4 +1,5 @@
 import { Effect } from "../../../../my-react/packages/react-reconciler/src/fiberHooks";
+import { DirtyLevels } from "./constants";
 export function effect(fn, options?) {
   // 创建一个响应式 effect，数据变化后可以重新执行
   const _effect = new ReactiveEffect(fn, () => {
@@ -43,19 +44,33 @@ function cleanDepEffect(dep, effect: ReactiveEffect) {
   }
 }
 
-class ReactiveEffect {
+export class ReactiveEffect {
   // 用于记录当前 effect 执行了几次
   _trackId = 0;
   _depsLength = 0;
   // 通过 _running 属性防止递归调用
   _running = 0;
+  // 取值时是否需要运行计算属性
+  _dirtyLevel = DirtyLevels.Dirty;
 
   deps = [] as any[];
 
   // 创建的 effect 是响应式的
   public active = true;
   constructor(public fn, public scheduler) {}
+
+  public get dirty() {
+    return this._dirtyLevel === DirtyLevels.Dirty;
+  }
+
+  public set dirty(isDirty: boolean) {
+    this._dirtyLevel = isDirty ? DirtyLevels.Dirty : DirtyLevels.NoDirty;
+  }
+
   run() {
+    // 每次运行后，effect 变为 NoDirty
+    this._dirtyLevel = DirtyLevels.NoDirty;
+
     if (!this.active) return this.fn();
 
     // 支持 effect 嵌套
@@ -100,8 +115,12 @@ export function trackEffect(effect: ReactiveEffect, dep) {
 
 export function triggerEffects(dep) {
   for (const effect of dep.keys()) {
-    // 防止递归调用，正在执行的 effect 不再执行 run
+    // 当前这个值是不脏的，但是触发更新后需要将值变为脏值
+    if (effect._dirtyLevel < DirtyLevels.Dirty) {
+      effect._dirtyLevel = DirtyLevels.Dirty;
+    }
     if (!effect._running) {
+      // 防止递归调用，正在执行的 effect 不再执行 run
       if (effect.scheduler) {
         effect.scheduler();
       }

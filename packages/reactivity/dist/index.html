@@ -15,16 +15,35 @@
       // } from "/node_modules/@vue/reactivity/dist/reactivity.esm-browser.js";
 
       // 自己的
-      import { reactive, effect, ref, toRef, toRefs } from "./reactivity.js";
+      import {
+        reactive,
+        effect,
+        ref,
+        toRef,
+        toRefs,
+        computed,
+      } from "./reactivity.js";
 
       const obj = reactive({ name: "erxiao", age: 18 });
       // console.log({ ...obj });
-      console.log(obj);
+
+      const newObj = computed({
+        get(v) {
+          console.log("runner", v);
+          return "---" + obj.name;
+        },
+        set(v) {
+          console.log("---setter", v);
+        },
+      });
+
+      effect(() => {
+        console.log(newObj.value);
+        console.log(newObj.value);
+        console.log(newObj.value);
+      });
 
       const { name } = toRefs(obj);
-      effect(() => {
-        app.innerHTML = name.value == "erxiao" ? 1 : 2;
-      });
 
       setTimeout(() => {
         name.value = "xiaoge";
