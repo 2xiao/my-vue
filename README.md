@@ -1,6 +1,6 @@
-<!-- <p align="center">
-  <img src="../../assets/image/react-logo.png" alt="logo" height="360"/>
-</p> -->
+<p align="center">
+  <a href="https://2xiao.github.io/my-vue" target="_blank"><img src="https://2xiao.github.io/leetcode-js/assets/image/vue-logo.png" alt="logo" height="360"/></a>
+</p>
 <p align="center"><font size=5><b>《手写 Vue 源码》</b></font></p>
 <p align="center"><font color=gray>深入理解 Vue 源码，带你从零实现 Vue 3.4 的核心功能，构建自己的 Vue 库。</font></p>
 
@@ -8,21 +8,22 @@
 
 ### 目录
 
-| 章节          | 目录                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 整体架构      | [1. Vue3 设计思想](https://2xiao.github.io/leetcode-js/vue/1.html) <br> [2. 开发环境搭建](https://2xiao.github.io/leetcode-js/vue/2.html)                                                                                                                                                                                                                                                                                                                         |
-| 响应式原理    | [3. 响应式数据核心](https://2xiao.github.io/leetcode-js/vue/3.html) <br> [4. Reactivity 模块](https://2xiao.github.io/leetcode-js/vue/4.html) <br> [5. Ref 实现](https://2xiao.github.io/leetcode-js/vue/5.html) <br> [6. Computed 实现原理](https://2xiao.github.io/leetcode-js/vue/6.html) <br> [7. Watch & WatchEffect](https://2xiao.github.io/leetcode-js/vue/7.html)                                                                                        |
-| 渲染原理      | [8. 实现 runtime-dom](https://2xiao.github.io/leetcode-js/vue/8.html) <br> [9. 实现 runtime-core](https://2xiao.github.io/leetcode-js/vue/9.html)                                                                                                                                                                                                                                                                                                                 |
-| Diff 算法原理 | [10. 实现 Diff 算法](https://2xiao.github.io/leetcode-js/vue/10.html)                                                                                                                                                                                                                                                                                                                                                                                             |
-| 组件渲染原理  | [11. 实现 Text 和 Fragment](https://2xiao.github.io/leetcode-js/vue/11.html) <br> [12. 实现组件渲染](https://2xiao.github.io/leetcode-js/vue/12.html) <br> [13. 实现 setup 函数](https://2xiao.github.io/leetcode-js/vue/13.html) <br> [14. 实现函数式组件](https://2xiao.github.io/leetcode-js/vue/14.html) <br> [15. 依赖注入原理](https://2xiao.github.io/leetcode-js/vue/15.html) <br> [16. 简化版 Ref 实现](https://2xiao.github.io/leetcode-js/vue/16.html) |
-| 其他实现原理  | [17. 实现 Teleport](https://2xiao.github.io/leetcode-js/vue/17.html) <br> [18. 实现 Transition](https://2xiao.github.io/leetcode-js/vue/18.html) <br> [19. 实现 KeepAlive](https://2xiao.github.io/leetcode-js/vue/19.html) <br> [20. 实现异步组件](https://2xiao.github.io/leetcode-js/vue/20.html)                                                                                                                                                              |
-| 模板编译原理  | [21. 编译优化](https://2xiao.github.io/leetcode-js/vue/21.html) <br> [22. 模板转化 AST 语法树](https://2xiao.github.io/leetcode-js/vue/22.html) <br> [23. 代码转化](https://2xiao.github.io/leetcode-js/vue/23.html) <br> [24. 代码生成](https://2xiao.github.io/leetcode-js/vue/24.html)                                                                                                                                                                         |
+<!-- prettier-ignore -->
+|  章节  |  目录 |
+| :------ | :------ |
+| 整体架构| [1. Vue3 设计思想](https://2xiao.github.io/my-vue/1.html) <br> [2. 开发环境搭建](https://2xiao.github.io/my-vue/2.html) |
+| 响应式原理 | [3. 响应式数据核心](https://2xiao.github.io/my-vue/3.html) <br> [4. Reactivity 模块](https://2xiao.github.io/my-vue/4.html) <br> [5. Ref 实现](https://2xiao.github.io/my-vue/5.html) <br> [6. Computed 实现原理](https://2xiao.github.io/my-vue/6.html) <br> [7. Watch & WatchEffect](https://2xiao.github.io/my-vue/7.html) |
+| 渲染原理 | [8. 实现 runtime-dom](https://2xiao.github.io/my-vue/8.html) <br> [9. 实现 runtime-core](https://2xiao.github.io/my-vue/9.html) |
+| Diff 算法原理 | [10. 实现 Diff 算法](https://2xiao.github.io/my-vue/10.html)|
+| 组件渲染原理 | [11. 实现 Text 和 Fragment](https://2xiao.github.io/my-vue/11.html) <br> [12. 实现组件渲染](https://2xiao.github.io/my-vue/12.html) <br> [13. 实现 setup 函数](https://2xiao.github.io/my-vue/13.html) <br> [14. 实现函数式组件](https://2xiao.github.io/my-vue/14.html) <br> [15. 依赖注入原理](https://2xiao.github.io/my-vue/15.html) <br> [16. 简化版 Ref 实现](https://2xiao.github.io/my-vue/16.html) |
+| 其他实现原理 | [17. 实现 Teleport](https://2xiao.github.io/my-vue/17.html) <br> [18. 实现 Transition](https://2xiao.github.io/my-vue/18.html) <br> [19. 实现 KeepAlive](https://2xiao.github.io/my-vue/19.html) <br> [20. 实现异步组件](https://2xiao.github.io/my-vue/20.html) |
+| 模板编译原理 | [21. 编译优化](https://2xiao.github.io/my-vue/21.html) <br> [22. 模板转化 AST 语法树](https://2xiao.github.io/my-vue/22.html) <br> [23. 代码转化](https://2xiao.github.io/my-vue/23.html) <br> [24. 代码生成](https://2xiao.github.io/my-vue/24.html) |
 
 ---
 
 ### 关于书中的代码
 
-教程地址：[https://2xiao.github.io/leetcode-js/vue](https://2xiao.github.io/leetcode-js/vue)
+教程地址：[https://2xiao.github.io/my-vue](https://2xiao.github.io/my-vue)
 
 源代码地址：[https://github.com/2xiao/my-vue](https://github.com/2xiao/my-vue)
 
@@ -73,4 +74,4 @@ Vue 是由卓越工程师们在数年时间内精心打造的库，其中必定�
 
 只要保持原作者署名和非商用，您可以自由地阅读、分享、修改本书。
 
-[开始阅读 ->](https://2xiao.github.io/leetcode-js/vue/1.html)
+[开始阅读 ->](https://2xiao.github.io/my-vue/1.html)

@@ -1,4 +1,3 @@
-import { Effect } from "../../../../my-react/packages/react-reconciler/src/fiberHooks";
 import { DirtyLevels } from "./constants";
 export function effect(fn, options?) {
   // 创建一个响应式 effect，数据变化后可以重新执行
@@ -109,8 +108,6 @@ export function trackEffect(effect: ReactiveEffect, dep) {
       effect._depsLength++;
     }
   }
-  // 存放所有与 effect 关联的 dep
-  effect[effect._depsLength++] = dep;
 }
 
 export function triggerEffects(dep) {

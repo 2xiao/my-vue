@@ -81,7 +81,6 @@ function trackEffect(effect2, dep) {
       effect2._depsLength++;
     }
   }
-  effect2[effect2._depsLength++] = dep;
 }
 function triggerEffects(dep) {
   for (const effect2 of dep.keys()) {
